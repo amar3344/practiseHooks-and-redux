@@ -7,15 +7,27 @@
 
 import { NewAppScreen } from '@react-native/new-app-screen';
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import FetchAPI from './src/FetchAPI';
+import CounterApp from './src/CounterApp';
+import { Provider } from 'react-redux';
+import ClassBasedComponent from './src/ClassBasedComponent';
+import { Store } from './src/redux/Store';
+import ReducerHook from './src/ReducerHook';
+import UseMemoHook from './src/UseMemoHook';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NewAppScreen templateFileName="App.tsx" />
+    <Provider store={Store}>
+    <View style={{backgroundColor:"#FFFFFF",flex:1}}>
+      {/* <FetchAPI/> */}
+      {/* <CounterApp/> */}
+      {/* <ClassBasedComponent/> */}
+      {/* <ReducerHook/> */}
+      <UseMemoHook/>
     </View>
+    </Provider>
   );
 }
 
