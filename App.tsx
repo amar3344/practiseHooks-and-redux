@@ -14,6 +14,7 @@ import ClassBasedComponent from './src/ClassBasedComponent';
 import { Store } from './src/redux/Store';
 import ReducerHook from './src/ReducerHook';
 import UseMemoHook from './src/UseMemoHook';
+import UseMemoExample from './src/UseMemo2';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -25,7 +26,8 @@ function App() {
       {/* <CounterApp/> */}
       {/* <ClassBasedComponent/> */}
       {/* <ReducerHook/> */}
-      <UseMemoHook/>
+      {/* <UseMemoHook/> */}
+      <UseMemoExample/>
     </View>
     </Provider>
   );
