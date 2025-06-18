@@ -16,6 +16,7 @@ import ReducerHook from './src/ReducerHook';
 import UseMemoHook from './src/UseMemoHook';
 import UseMemoExample from './src/UseMemo2';
 import UseCallbackExample from './src/UseCalback';
+import CustomeHook from './src/CustomeHook';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -29,7 +30,8 @@ function App() {
       {/* <ReducerHook/> */}
       {/* <UseMemoHook/> */}
       {/* <UseMemoExample/> */}
-      <UseCallbackExample/>
+      {/* <UseCallbackExample/> */}
+      <CustomeHook/>
     </View>
     </Provider>
   );

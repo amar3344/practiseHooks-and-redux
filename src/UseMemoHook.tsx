@@ -4,12 +4,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { jsonDataApiCall, IJ, jsonSearchedNameApiCall } from "./redux/JsonDataSlicer"
 import { AppDispatch, RootState } from './redux/Store'
 
+let timeout:any
+
 const UseMemoHook = () => {
     const [searchInput, setSearchInput] = useState("")
     const dispatch = useDispatch<AppDispatch>()
+    const [bouncing,setDebouncing] = useState(false)
     const { loading, data } = useSelector((state: RootState) => state.jsonFetchData)
     useEffect(() => {
         dispatch(jsonDataApiCall())
+        return () => clearTimeout(timeout)
     }, [])
 
     const highlistText = (username: string) => {
@@ -37,8 +41,14 @@ const UseMemoHook = () => {
         )
     }
     const getSearchedItems = (input: string) => {
+        if(bouncing) return 
+        clearTimeout(timeout)
         setSearchInput(input)
-        dispatch(jsonSearchedNameApiCall({ searchName: input }))
+        setDebouncing(true)
+        timeout = setTimeout(()=>{
+            dispatch(jsonSearchedNameApiCall({ searchName: input }))
+            setDebouncing(false)
+        },1000)
     }
     return (
         <View style={styles.container}>
